@@ -5,7 +5,15 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_stdout_logging'
+end
+
 gem 'therubyracer', '0.11.0beta5'
 gem 'libv8', '~> 3.11.8'
 
