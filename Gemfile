@@ -14,8 +14,8 @@ group :production do
   gem 'rails_stdout_logging'
 end
 
-gem 'therubyracer', '0.11.0beta5'
-gem 'libv8', '~> 3.11.8'
+#gem 'therubyracer', '0.11.0beta5'
+#gem 'libv8', '~> 3.11.8'
 
 
 # Gems used only for assets and not required
