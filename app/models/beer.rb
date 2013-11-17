@@ -1,5 +1,5 @@
 class Beer < ActiveRecord::Base
-  include ActionView::Helpers::TextHelper
+  include RatingAverage
 
   attr_accessible :brewery_id, :name, :style
 
@@ -7,7 +7,9 @@ class Beer < ActiveRecord::Base
 
   has_many :ratings, :dependent => :destroy
 
-  def average_rating
+  has_many :raters, :through => :ratings, :source => :user
+
+#  def average_rating
   #  @m = 0
   #  self.ratings.each do |rating|
   #      @m = @m + rating.score
@@ -20,13 +22,13 @@ class Beer < ActiveRecord::Base
     #@x.size
    # Beer.find(self.id).ratings.map(&:score).inject() { |result, element| result + element }
 
-    pluralize(Beer.find(self.id).ratings.map(&:score).size, "Beer has " + Beer.find(self.id).ratings.map(&:score).size.to_s +
-        " rating, score " + (Beer.find(self.id).ratings.map(&:score).inject() { |result, element| result + element }/
-        Beer.find(self.id).ratings.map(&:score).size).to_s, "Beer has " +
-        Beer.find(self.id).ratings.map(&:score).size.to_s + " ratings, average score " +
-                  (Beer.find(self.id).ratings.map(&:score).inject() { |result, element| result + element }/
-                      Beer.find(self.id).ratings.map(&:score).size).to_s)
-  end
+ #   pluralize(Beer.find(self.id).ratings.map(&:score).size, "Beer has " + Beer.find(self.id).ratings.map(&:score).size.to_s +
+ #       " rating, score " + (Beer.find(self.id).ratings.map(&:score).inject() { |result, element| result + element }/
+ #       Beer.find(self.id).ratings.map(&:score).size).to_s, "Beer has " +
+ #       Beer.find(self.id).ratings.map(&:score).size.to_s + " ratings, average score " +
+ #                 (Beer.find(self.id).ratings.map(&:score).inject() { |result, element| result + element }/
+ #                     Beer.find(self.id).ratings.map(&:score).size).to_s)
+ # end
 
   def to_s
      b = Beer.find(self.id)

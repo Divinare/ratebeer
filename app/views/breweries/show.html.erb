@@ -6,14 +6,21 @@
 
 <p> Number of beers <%= @brewery.beers.count %> </p>
 
-<p>
+<ul>
   <% @brewery.beers.each do |beer| %>
+      <li>
       <%= link_to beer.name, beer %>
+      </li>
   <% end %>
-</p>
+</ul>
+<% if @brewery.average_rating == 0 %>
+    <p> Brewery has no ratings </p>
+<% elsif @brewery.ratings.count == 1 %>
+    <p> Brewery has 1 rating, score: <%= @brewery.ratings.first.score %></p>
+<% else %>
+    <p> Brewery has <%= @brewery.ratings.count %> ratings, average: <%= @brewery.average_rating %> </p>
+<% end %>
 
-
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
-<%= link_to 'Back', breweries_path %>
+<%= link_to 'Edit', edit_brewery_path(@brewery) %>
 
 <%= link_to 'List of beers', beers_path %>

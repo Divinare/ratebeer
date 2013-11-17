@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+ <h2> <%= @user.username %> </h2>
+
+<% if @user.ratings.empty? %>
+   <p> no ratings given</p>
+<% elsif @user.ratings.size == 1 %>
+    <p> has <%= @user.ratings.size %> rating, average score: <%= @user.average_rating %> </p>
+<% else %>
+   <p> has <%= @user.ratings.size %> ratings, average score: <%= @user.average_rating %> </p>
+<% end %>
+
+<ul>
+  <% @user.ratings.each do |rating| %>
+      <li> <%= rating.beer.to_s %> <%= rating.score %> <%= link_to 'delete', rating, :method => :delete, data: { confirm: 'Are you sure?' } %> </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= "belongs to" %>
+
+   <% @beerclub_ids.each do |id| %>
+     <%= link_to BeerClub.find(id).name, BeerClub.find(id) %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %>
