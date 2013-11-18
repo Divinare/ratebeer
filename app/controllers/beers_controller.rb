@@ -27,6 +27,7 @@ class BeersController < ApplicationController
     @beer = Beer.new
     @breweries = Brewery.all
     @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @beer }

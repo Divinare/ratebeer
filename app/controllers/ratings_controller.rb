@@ -19,13 +19,13 @@ class RatingsController < ApplicationController
     redirect_to user_path current_user
     else
       @beers = Beer.all
-      render :action =>"new"
+      render :new
     end
   end
 
   def destroy
     rating = Rating.find params[:id]
-    rating.delete
+    rating.delete if current_user == rating.user
     redirect_to :back
   end
 

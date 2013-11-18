@@ -12,16 +12,27 @@
 
 <ul>
   <% @user.ratings.each do |rating| %>
-      <li> <%= rating.beer.to_s %> <%= rating.score %> <%= link_to 'delete', rating, :method => :delete, data: { confirm: 'Are you sure?' } %> </li>
+      <li>
+        <%= rating %>
+        <% if @user == current_user %>
+            <%= link_to 'delete', rating, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+        <% end %>
+      </li>
   <% end %>
 </ul>
 
+<% if not @beerclub_ids.empty? %>
 <p>
   <%= "belongs to" %>
-
    <% @beerclub_ids.each do |id| %>
      <%= link_to BeerClub.find(id).name, BeerClub.find(id) %>
   <% end %>
 </p>
+<% else %>
+<p> <%= @user.username + " doesn't belong to any club." %> </p>
+<% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<% if @user == current_user %>
+   <%= link_to 'Edit', edit_user_path(@user) %>
+   <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

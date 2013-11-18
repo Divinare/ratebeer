@@ -9,6 +9,10 @@ class Beer < ActiveRecord::Base
 
   has_many :raters, :through => :ratings, :source => :user
 
+  validates :name, presence: true
+
+  #validates_length_of :name, :minimum => 2
+
 #  def average_rating
   #  @m = 0
   #  self.ratings.each do |rating|
