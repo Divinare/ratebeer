@@ -1,4 +1,5 @@
 class BreweriesController < ApplicationController
+  before_filter :authenticate, :only => [:new, :create, :destroy]
 
   # GET /breweries
   # GET /breweries.json
@@ -82,5 +83,12 @@ class BreweriesController < ApplicationController
     end
   end
 
+  private
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "admin" and password == "secret"
+    end
+  end
 
 end
