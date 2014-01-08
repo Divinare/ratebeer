@@ -9,9 +9,10 @@ script:
  - bundle exec rake db:test:prepare
  - bundle exec rspec -f d spec/
 
- deploy:
-   provider: heroku
-   app: joen-ratebeer
-   api_key: b6e22d38-edec-4521-98be-2b8027f13540
-   run: "rake db:migrate"
-   run: "rake db:reset"
+deploy:
+  provider: heroku
+  api_key:
+    secure: X3YdeJdChXwmo/JVCH+WYncn+JLyrg0/TvzvxZqdA8jW4EUvD8S+qUtXEb4m0/WOH6fCf/JpFFGjjBd9HWTVN+jPhnLGKSZsGE0eQ4xdUlLkKH5mISkjHcc9GoEY4TLiWZN2HJmJ2SqW2MQXkr/hCLV0o2e92s7dIIB5fzYy8UI=
+  app: joen-ratebeer
+  on:
+    repo: Divinare/ratebeer

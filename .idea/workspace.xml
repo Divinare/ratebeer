@@ -8,7 +8,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="f5e32126-1de5-4a01-9384-e5d8c3261851" time="1389183117434" ignored="false" />
     <file path="/beers_spec.rb" changelist="f5e32126-1de5-4a01-9384-e5d8c3261851" time="1389186898634" ignored="false" />
-    <file path="/.travis.yml" changelist="f5e32126-1de5-4a01-9384-e5d8c3261851" time="1389194712923" ignored="false" />
+    <file path="/.travis.yml" changelist="f5e32126-1de5-4a01-9384-e5d8c3261851" time="1389196544037" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
       <file leaf-file-name=".travis.yml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="22" selection-start="349" selection-end="349" vertical-scroll-proportion="0.30967742">
+            <state line="10" column="0" selection-start="200" selection-end="200" vertical-scroll-proportion="0.19685039">
               <folding />
             </state>
           </provider>
@@ -456,7 +456,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="349" selection-end="349" vertical-scroll-proportion="0.30967742">
+        <state line="10" column="0" selection-start="200" selection-end="200" vertical-scroll-proportion="0.19685039">
           <folding />
         </state>
       </provider>
