@@ -11,7 +11,7 @@ script:
 
  deploy:
    provider: heroku
-   api_key: "b6e22d38-edec-4521-98be-2b8027f13540"
+   api_key: b6e22d38-edec-4521-98be-2b8027f13540
    app: joen-ratebeer
    run: "rake db:migrate"
    run: "rake db:reset"

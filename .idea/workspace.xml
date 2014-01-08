@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f5e32126-1de5-4a01-9384-e5d8c3261851" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ratebeer.iml" afterPath="$PROJECT_DIR$/.idea/ratebeer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ratebeer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +31,7 @@
       <file leaf-file-name=".travis.yml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="22" selection-start="351" selection-end="351" vertical-scroll-proportion="0.30967742">
+            <state line="13" column="48" selection-start="278" selection-end="278" vertical-scroll-proportion="0.2516129">
               <folding />
             </state>
           </provider>
@@ -459,7 +456,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="351" selection-end="351" vertical-scroll-proportion="0.30967742">
+        <state line="13" column="48" selection-start="278" selection-end="278" vertical-scroll-proportion="0.2516129">
           <folding />
         </state>
       </provider>
