@@ -14,5 +14,7 @@ deploy:
   api_key:
     secure: X3YdeJdChXwmo/JVCH+WYncn+JLyrg0/TvzvxZqdA8jW4EUvD8S+qUtXEb4m0/WOH6fCf/JpFFGjjBd9HWTVN+jPhnLGKSZsGE0eQ4xdUlLkKH5mISkjHcc9GoEY4TLiWZN2HJmJ2SqW2MQXkr/hCLV0o2e92s7dIIB5fzYy8UI=
   app: joen-ratebeer
+  run: "rake db:migrate"
+  run: "rake db:reset"
   on:
     repo: Divinare/ratebeer
