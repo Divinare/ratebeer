@@ -4,12 +4,22 @@ gem 'rails', '3.2.14'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'strong_parameters'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+group :test do
+  gem 'simplecov', :require => false
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+end
 
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :production do

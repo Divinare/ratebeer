@@ -42,7 +42,7 @@ class BeersController < ApplicationController
   # POST /beers
   # POST /beers.json
   def create
-    @beer = Beer.new(params[:beer])
+    @beer = Beer.new(params_beer)
 
     respond_to do |format|
       if @beer.save
@@ -84,4 +84,8 @@ class BeersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+   def params_beer
+     params.require(:beer).permit(:name, :style, :brewery_id)
+   end
 end

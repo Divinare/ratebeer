@@ -11,6 +11,8 @@ class Beer < ActiveRecord::Base
 
   validates :name, presence: true
 
+  validates :style, presence: true
+
   #validates_length_of :name, :minimum => 2
 
 #  def average_rating

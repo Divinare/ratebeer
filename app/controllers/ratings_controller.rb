@@ -10,7 +10,7 @@ class RatingsController < ApplicationController
 
   def create
     #Rating.create params[:rating]
-    session[:last_rating] = "#{Beer.find(params[:rating][:beer_id])} #{params[:rating][:score]} points"
+    #session[:last_rating] = "#{Beer.find(params[:rating][:beer_id])} #{params[:rating][:score]} points"
 
 
     @rating = Rating.new params[:rating]

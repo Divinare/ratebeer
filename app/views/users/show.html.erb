@@ -2,6 +2,14 @@
 
  <h2> <%= @user.username %> </h2>
 
+<% if not @user.favorite_beer.nil? %>
+<p> Favorite style: <%= @user.favorite_style %> </p>
+<% end %>
+
+<% if not @user.favorite_brewery_id.nil? %>
+    <p> Favorite brewery: <%= Brewery.find(@user.favorite_brewery_id).name %></p>
+<% end %>
+
 <% if @user.ratings.empty? %>
    <p> no ratings given</p>
 <% elsif @user.ratings.size == 1 %>
