@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include RatingAverage
 
-  attr_accessible :username, :password, :password_confirmation
+ #  attr_accessible :username, :password, :password_confirmation, :admin
   has_secure_password
 
   has_many :ratings
@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
 
   validates_length_of :password, :minimum => 4
 
-  validates :password, :format => {:with => /^(?=.*[a-zA-Z])(?=.*[0-9]).{3,}$/, message: "must contain at least one number and one letter"}
+  validates :password, :presence     => true,
+                       :format => {:with => /\A(?=.*[a-zA-Z])(?=.*[0-9]).{3,}\z/, message: "must contain at least one number and one letter"}
 
   def favorite_beer
     return nil if ratings.empty?

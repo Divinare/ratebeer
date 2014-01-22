@@ -47,7 +47,7 @@ class MembershipsController < ApplicationController
       redirect_to user_path(current_user), :notice => "Something went wrong, is the user already a member?"
       return
     end
-    @membership = Membership.new(params[:membership])
+    @membership = Membership.new(params_membership)
     @membership.user_id = current_user.id
 
     #respond_to do |format|
@@ -69,7 +69,7 @@ class MembershipsController < ApplicationController
     @membership = Membership.find(params[:id])
 
     respond_to do |format|
-      if @membership.update_attributes(params[:membership])
+      if @membership.update_attributes(params_membership)
         format.html { redirect_to @membership, notice: 'Membership was successfully updated.' }
         format.json { head :no_content }
       else
@@ -89,5 +89,9 @@ class MembershipsController < ApplicationController
       format.html { redirect_to memberships_url }
       format.json { head :no_content }
     end
+  end
+
+  def params_membership
+    params.require(:membership).permit(:beer_club_id, :user_id)
   end
 end

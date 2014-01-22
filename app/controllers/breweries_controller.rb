@@ -1,5 +1,6 @@
 class BreweriesController < ApplicationController
-  before_filter :authenticate, :only => [:new, :create, :destroy]
+  #before_filter :authenticate, :only => [:destroy]
+  #before_filter :ensure_that_signed_in, :except => [:index, :show]
 
   # GET /breweries
   # GET /breweries.json
@@ -42,7 +43,7 @@ class BreweriesController < ApplicationController
   # POST /breweries
   # POST /breweries.json
   def create
-    @brewery = Brewery.new(params[:brewery])
+    @brewery = Brewery.new(params_brewery)
 
     respond_to do |format|
       if @brewery.save
@@ -61,7 +62,7 @@ class BreweriesController < ApplicationController
     @brewery = Brewery.find(params[:id])
 
     respond_to do |format|
-      if @brewery.update_attributes(params[:brewery])
+      if @brewery.update_attributes(params_brewery)
         format.html { redirect_to @brewery, notice: 'Brewery was successfully updated.' }
         format.json { head :no_content }
       else
@@ -75,7 +76,11 @@ class BreweriesController < ApplicationController
   # DELETE /breweries/1.json
   def destroy
     @brewery = Brewery.find(params[:id])
-    @brewery.destroy
+    if not current_user.nil?
+       if (current_user.admin)
+           @brewery.destroy
+       end
+    end
 
     respond_to do |format|
       format.html { redirect_to breweries_url }
@@ -89,6 +94,12 @@ class BreweriesController < ApplicationController
     authenticate_or_request_with_http_basic do |username, password|
       username == "admin" and password == "secret"
     end
+  end
+
+  private
+
+  def params_brewery
+    params.require(:brewery).permit(:name, :year)
   end
 
 end

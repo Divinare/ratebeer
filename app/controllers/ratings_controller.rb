@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  before_filter :ensure_that_signed_in, :except => [:index]
   def index
     @ratings = Rating.all
   end
@@ -13,7 +14,7 @@ class RatingsController < ApplicationController
     #session[:last_rating] = "#{Beer.find(params[:rating][:beer_id])} #{params[:rating][:score]} points"
 
 
-    @rating = Rating.new params[:rating]
+    @rating = Rating.new(params_rating)
     if @rating.save
     current_user.ratings << @rating
     redirect_to user_path current_user
@@ -27,6 +28,10 @@ class RatingsController < ApplicationController
     rating = Rating.find params[:id]
     rating.delete if current_user == rating.user
     redirect_to :back
+  end
+
+  def params_rating
+    params.require(:rating).permit(:score, :beer_id)
   end
 
 end

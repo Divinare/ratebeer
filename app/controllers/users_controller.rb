@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :ensure_that_signed_in, :except => [:index, :new, :create]
   # GET /users
   # GET /users.json
   def index
@@ -42,12 +43,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params_user)
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        format.html { redirect_to users_path, notice: 'User was successfully created.' }
+        format.json { render json: users_path, status: :created, location: users_path }
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if params[:user][:username].nil? and currently_signed_in? @user and @user.update_attributes(params[:user])
+      if params[:user][:username].nil? and currently_signed_in? @user and @user.update_attributes(params_user)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -86,4 +87,10 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def params_user
+    params.require(:user).permit(:username, :password, :password_confirmation)
+  end
+
+
 end

@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Ratebeer</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", :media => "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -29,7 +29,7 @@
 </div>
 
 <% if not current_user.nil? %>
-    <p><%= current_user.username %> signed in</p>
+    <p><%= current_user.username %> is signed in</p>
 <% end %>
 
 <%= yield %>
