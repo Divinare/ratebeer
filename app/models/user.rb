@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 4
 
   validates :password, :presence     => true,
-                       :format => {:with => /\A(?=.*[a-zA-Z])(?=.*[0-9]).{3,}\z/, message: "must contain at least one number and one letter"}
+                       :format => {:with => /\A(?=.*[A-Z])(?=.*[0-9]).{3,}\z/, message: "password must contain at least one number and one big case letter"}
+
 
   def favorite_beer
     return nil if ratings.empty?
