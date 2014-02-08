@@ -1,5 +1,10 @@
 <h1>Listing beers</h1>
 
+<% if not flash[:error].nil? %>
+    <br/>
+    <b> <%= printRedColor(flash[:error]).html_safe %> </b>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>

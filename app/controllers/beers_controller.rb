@@ -75,6 +75,10 @@ class BeersController < ApplicationController
   # DELETE /beers/1
   # DELETE /beers/1.json
   def destroy
+    if current_user.admin.nil? || current.user_admin == false
+      redirect_to :back, :notice => 'you have to be an admin to destroy things'
+      return
+    end
     @beer = Beer.find(params[:id])
     @beer.destroy
 
