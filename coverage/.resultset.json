@@ -89,6 +89,11 @@
       "/home/joe/ratebeer/config/environments/test.rb": [
         1,
         null,
+        1,
+        1,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -101,7 +106,7 @@
         1,
         null,
         null,
-        1,
+        null,
         null,
         null,
         1,
@@ -1439,6 +1444,6 @@
         null
       ]
     },
-    "timestamp": 1391867834
+    "timestamp": 1391871689
   }
 }
