@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92175e8d-7fb4-45bf-ae6b-0a1b1e69b726" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coverage/.last_run.json" afterPath="$PROJECT_DIR$/coverage/.last_run.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coverage/.resultset.json" afterPath="$PROJECT_DIR$/coverage/.resultset.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coverage/index.html" afterPath="$PROJECT_DIR$/coverage/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/secret_token.rb" afterPath="$PROJECT_DIR$/config/initializers/secret_token.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/test.rb" afterPath="$PROJECT_DIR$/config/environments/test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ratebeer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,6 +22,7 @@
     <file path="/beers_spec.rb" changelist="92175e8d-7fb4-45bf-ae6b-0a1b1e69b726" time="1391863400403" ignored="false" />
     <file path="/ratings_spec.rb" changelist="92175e8d-7fb4-45bf-ae6b-0a1b1e69b726" time="1391863439020" ignored="false" />
     <file path="/production.rb" changelist="92175e8d-7fb4-45bf-ae6b-0a1b1e69b726" time="1391871475949" ignored="false" />
+    <file path="/secret_token.rb" changelist="92175e8d-7fb4-45bf-ae6b-0a1b1e69b726" time="1391877768823" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +126,7 @@
       <file leaf-file-name="secret_token.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/initializers/secret_token.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="51" selection-start="792" selection-end="792" vertical-scroll-proportion="0.20661157">
+            <state line="9" column="1" selection-start="592" selection-end="592" vertical-scroll-proportion="0.18595041">
               <folding />
             </state>
           </provider>
@@ -703,7 +697,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/secret_token.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="51" selection-start="792" selection-end="792" vertical-scroll-proportion="0.20661157">
+        <state line="9" column="1" selection-start="592" selection-end="592" vertical-scroll-proportion="0.18595041">
           <folding />
         </state>
       </provider>
