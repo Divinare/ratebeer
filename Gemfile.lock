@@ -167,7 +167,7 @@ DEPENDENCIES
   pg
   rails (= 4.0.2)
   rails_stdout_logging
-  rspec-rails (~> 2.0)
+  rspec-rails (~> 2.14.1)
   sass-rails (~> 4.0.0)
   simplecov
   sqlite3

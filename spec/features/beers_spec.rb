@@ -8,7 +8,7 @@ describe "Beer" do
   let!(:rating) { FactoryGirl.create :rating, :beer_id => beer1.id }
 
   before :each do
-    sign_in 'Pekka', 'foobar1'
+    sign_in 'Pekka', 'Foobar1'
   end
 
   it "user can insert beer to database" do

@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :user do
     username "Pekka"
-    password "foobar1"
-    password_confirmation "foobar1"
+    password "Foobar1"
+    password_confirmation "Foobar1"
   end
 
   factory :rating, :class => Rating do

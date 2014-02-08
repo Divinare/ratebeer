@@ -1,5 +1,7 @@
 class BeersController < ApplicationController
   before_filter :ensure_that_signed_in, :except => [:index, :show]
+  before_action :set_breweries_and_styles_for_template, only: [:new, :edit, :create]
+
   # GET /beers
   # GET /beers.json
   def index
@@ -26,8 +28,6 @@ class BeersController < ApplicationController
   # GET /beers/new.json
   def new
     @beer = Beer.new
-    @breweries = Brewery.all
-    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,8 +38,6 @@ class BeersController < ApplicationController
   # GET /beers/1/edit
   def edit
     @beer = Beer.find(params[:id])
-    @breweries = Brewery.all
-    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
   end
 
   # POST /beers
@@ -52,8 +50,6 @@ class BeersController < ApplicationController
         format.html { redirect_to beers_path, notice: 'Beer was successfully created.' }
         format.json { render json: @beer, status: :created, location: @beer }
       else
-        @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
-        @breweries = Brewery.all
         format.html { render action: "new" }
         format.json { render json: @beer.errors, status: :unprocessable_entity }
       end
@@ -91,4 +87,9 @@ class BeersController < ApplicationController
    def params_beer
      params.require(:beer).permit(:name, :style, :brewery_id)
    end
+end
+
+def set_breweries_and_styles_for_template
+  @breweries = Brewery.all
+  @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
 end
