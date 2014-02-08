@@ -27,7 +27,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'debugger'
   gem 'rspec-rails', '~> 2.14.1'
 end
@@ -51,8 +50,6 @@ end
   gem 'therubyracer', :platforms => :ruby
 
 #end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
