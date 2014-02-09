@@ -75,6 +75,7 @@ class BeersController < ApplicationController
   # DELETE /beers/1
   # DELETE /beers/1.json
   def destroy
+
     if is_not_admin
       redirect_to :back, :flash => { :error => 'You have to be an admin to destroy things' }
       return
