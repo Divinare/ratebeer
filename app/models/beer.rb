@@ -38,8 +38,11 @@ class Beer < ActiveRecord::Base
 
   def to_s
      b = Beer.find(self.id)
+     if not b.brewery.nil?
      p = Brewery.find(b.brewery_id)
      b.name + " " + p.name
+     else
+     b.name + " No brewery"
+     end
   end
-
 end

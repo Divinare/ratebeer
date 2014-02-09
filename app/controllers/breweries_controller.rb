@@ -1,6 +1,6 @@
 class BreweriesController < ApplicationController
   #before_filter :authenticate, :only => [:destroy]
-  #before_filter :ensure_that_signed_in, :except => [:index, :show]
+  before_filter :ensure_that_signed_in, :except => [:index, :show]
 
   # GET /breweries
   # GET /breweries.json
@@ -75,6 +75,12 @@ class BreweriesController < ApplicationController
   # DELETE /breweries/1
   # DELETE /breweries/1.json
   def destroy
+
+    if is_not_admin
+      redirect_to :back, :flash => { :error => 'You have to be an admin to destroy things' }
+      return
+    end
+
     @brewery = Brewery.find(params[:id])
     if not current_user.nil?
        if (current_user.admin)

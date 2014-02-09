@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
- <h2> <%= @user.username %> </h2>
+ <h2> <%= @user.username %> <% if @user.admin == true %> (admin) <% end %></h2>
 
 <% if not @user.favorite_beer.nil? %>
 <p> Favorite style: <%= @user.favorite_style %> </p>
@@ -11,7 +11,7 @@
 <% end %>
 
 <% if @user.ratings.empty? %>
-   <p> no ratings given</p>
+   <p> No ratings given</p>
 <% elsif @user.ratings.size == 1 %>
     <p> has <%= @user.ratings.size %> rating, average score: <%= @user.average_rating %> </p>
 <% else %>

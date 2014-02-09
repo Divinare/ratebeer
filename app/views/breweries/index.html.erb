@@ -2,6 +2,10 @@
 
 <p> number of breweries <%= @breweries.count %> </p>
 
+<% if not flash[:error].nil? %>
+    <b> <%= printRedColor(flash[:error]).html_safe %> </b>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>
@@ -15,8 +19,8 @@
   <tr>
     <td><%= link_to brewery.name, brewery %></td>
     <td><%= brewery.year %></td>
-    <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
-    <td><%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td> <% if not current_user.nil? %> <%= link_to 'Edit', edit_brewery_path(brewery) %> <% end %></td>
+    <td> <% if not current_user.nil? %> <%= link_to 'Destroy', brewery, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
   </tr>
 <% end %>
 </table>

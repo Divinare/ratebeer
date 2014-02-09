@@ -170,7 +170,10 @@
         null,
         null,
         null,
-        1
+        1,
+        null,
+        null,
+        null
       ],
       "/home/joe/ratebeer/config/initializers/session_store.rb": [
         null,
@@ -206,7 +209,7 @@
         1,
         null,
         1,
-        207,
+        219,
         176,
         null,
         null,
@@ -246,6 +249,8 @@
       ],
       "/home/joe/ratebeer/app/controllers/beer_clubs_controller.rb": [
         1,
+        1,
+        null,
         null,
         null,
         1,
@@ -435,7 +440,7 @@
       "/home/joe/ratebeer/app/controllers/breweries_controller.rb": [
         1,
         null,
-        null,
+        1,
         null,
         null,
         null,
@@ -1444,6 +1449,6 @@
         null
       ]
     },
-    "timestamp": 1391871689
+    "timestamp": 1391879057
   }
 }
