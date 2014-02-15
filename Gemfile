@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 # gem "rails", '~>4.0.0'
 
 gem 'bcrypt-ruby', '~> 3.1.2'
-
 gem 'rails', '4.0.2'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
@@ -12,6 +11,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+
+gem 'httparty'
+gem "rails-settings-cached", "0.3.1"
 
 
 #gem 'strong_parameters'
@@ -24,6 +26,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'webmock'
 end
 
 group :development, :test do

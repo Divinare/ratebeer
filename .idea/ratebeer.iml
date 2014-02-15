@@ -34,6 +34,7 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.3, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="columnize (v0.3.6, RVM: ruby-1.9.3-p429) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="crack (v0.4.2, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debugger (v1.6.5, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debugger-linecache (v1.2.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debugger-ruby_core_source (v1.3.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
@@ -44,6 +45,7 @@
     <orderEntry type="library" scope="PROVIDED" name="factory_girl (v4.3.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_girl_rails (v4.3.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hike (v1.2.3, RVM: ruby-1.9.3-p429) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="httparty (v0.12.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.6.9, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v1.5.3, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v3.0.4, RVM: ruby-1.9.3-p429) [gem]" level="application" />
@@ -55,12 +57,14 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_portile (v0.5.2, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v4.7.5, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.8.4, RVM: ruby-1.9.3-p429) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.5.5, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.6.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v0.17.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.5.2, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.2, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v4.0.2, RVM: ruby-1.9.3-p429) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-settings-cached (v0.3.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails_stdout_logging (v0.0.3, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.0.2, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.1.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
@@ -69,6 +73,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v2.14.4, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v2.14.4, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v2.14.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="safe_yaml (v1.0.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.2.13, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v4.0.1, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.8.2, RVM: ruby-1.9.3-p429) [gem]" level="application" />
@@ -84,6 +89,7 @@
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v2.2.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.38, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.4.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="webmock (v1.17.3, RVM: ruby-1.9.3-p429) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v2.0.0, RVM: ruby-1.9.3-p429) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">

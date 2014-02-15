@@ -40,7 +40,7 @@ describe "Rating" do
      expect {
      click_link('delete')
      }.to change{Rating.count}.from(1).to(0)
-     expect(page).to have_content ("no ratings given")
+     expect(page).to have_content ("No ratings given")
   end
 
 

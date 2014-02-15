@@ -1,6 +1,7 @@
 class BreweriesController < ApplicationController
   #before_filter :authenticate, :only => [:destroy]
   before_filter :ensure_that_signed_in, :except => [:index, :show]
+  before_action :set_brewery, only: [:show, :edit, :update, :destroy]
 
   # GET /breweries
   # GET /breweries.json
@@ -16,7 +17,6 @@ class BreweriesController < ApplicationController
   # GET /breweries/1
   # GET /breweries/1.json
   def show
-    @brewery = Brewery.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,7 +37,7 @@ class BreweriesController < ApplicationController
 
   # GET /breweries/1/edit
   def edit
-    @brewery = Brewery.find(params[:id])
+
   end
 
   # POST /breweries
@@ -59,7 +59,6 @@ class BreweriesController < ApplicationController
   # PUT /breweries/1
   # PUT /breweries/1.json
   def update
-    @brewery = Brewery.find(params[:id])
 
     respond_to do |format|
       if @brewery.update_attributes(params_brewery)
@@ -81,7 +80,6 @@ class BreweriesController < ApplicationController
       return
     end
 
-    @brewery = Brewery.find(params[:id])
     if not current_user.nil?
        if (current_user.admin)
            @brewery.destroy
@@ -107,5 +105,10 @@ class BreweriesController < ApplicationController
   def params_brewery
     params.require(:brewery).permit(:name, :year)
   end
+
+  def set_brewery
+    @brewery = Brewery.find(params[:id])
+  end
+
 
 end
