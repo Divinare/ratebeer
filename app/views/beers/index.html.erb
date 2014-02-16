@@ -14,21 +14,28 @@
     <th></th>
   </tr>
 
-<% @beers.each do |beer| %>
-  <tr>
-    <td><%= link_to beer.name, beer %></td>
-    <td><%= beer.style %></td>
-    <td><% if beer.brewery.nil? %> No brewery
-      <% else %>
-          <%= link_to Brewery.where(:id => beer.brewery_id).first.name, brewery_path(Brewery.where(:id => beer.brewery_id).first.id)  %>
-      <% end %>
-    </td>
-    <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-    <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @beers.each do |beer| %>
+      <tr>
+        <td><%= link_to beer.name, beer %></td>
+        <td>
+          <% if beer.style.nil? %>
+              <%= "No style" %>
+          <% else %>
+              <%= beer.style.name %>
+          <% end %>
+        </td>
+        <td>
+          <% if beer.brewery.nil? %> No brewery
+          <% else %>
+              <%= link_to Brewery.where(:id => beer.brewery_id).first.name, brewery_path(Brewery.where(:id => beer.brewery_id).first.id) %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
+        <td><%= link_to 'Destroy', beer, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to('New Beer', new_beer_path) if current_user %>

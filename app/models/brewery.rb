@@ -3,7 +3,7 @@ class Brewery < ActiveRecord::Base
 
  # secure params :name, :year
 
-  has_many :beers
+  has_many :beers, :dependent => :destroy
   has_many :ratings, :through => :beers
 
   validates :name, presence: true

@@ -2,14 +2,6 @@
 
  <h2> <%= @user.username %> <% if @user.admin == true %> (admin) <% end %></h2>
 
-<% if not @user.favorite_beer.nil? %>
-<p> Favorite style: <%= @user.favorite_style %> </p>
-<% end %>
-
-<% if not @user.favorite_brewery_id.nil? %>
-    <p> Favorite brewery: <%= Brewery.find(@user.favorite_brewery_id).name %></p>
-<% end %>
-
 <% if @user.ratings.empty? %>
    <p> No ratings given</p>
 <% elsif @user.ratings.size == 1 %>
@@ -29,15 +21,13 @@
   <% end %>
 </ul>
 
-<% if not @beerclub_ids.empty? %>
-<p>
-  <%= "belongs to" %>
-   <% @beerclub_ids.each do |id| %>
-     <%= link_to BeerClub.find(id).name, BeerClub.find(id) %>
-  <% end %>
-</p>
-<% else %>
-<p> <%= @user.username + " doesn't belong to any club." %> </p>
+<% if @user.beer_clubs.any? %>
+    <p>
+      member of
+      <% @user.beer_clubs.each do |club| %>
+          <%= link_to club.name, club %>
+      <% end %>
+    </p>
 <% end %>
 
 <% if @user == current_user %>

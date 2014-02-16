@@ -1,23 +1,42 @@
 require 'spec_helper'
 
+include OwnTestHelper
+
 describe User do
   it "has the username set correctly" do
-    user = User.new :username => "Pekka"
+    user = User.new username:"Pekka"
 
     user.username.should == "Pekka"
   end
-  it "is not saved without a proper password" do
-    user = User.create :username => "Pekka"
 
-    expect(user.valid?).to be(false)
-    expect(User.count).to eq(0)
+  describe "is not saved when password" do
+    it "is missing" do
+      user = User.create :username => "Pekka"
+
+      expect(user).not_to be_valid
+      expect(User.count).to eq(0)
+    end
+
+    it "is too short" do
+      user = User.create username:"Pekka", password:"S1", password_confirmation:"S1"
+
+      expect(user).not_to be_valid
+      expect(User.count).to eq(0)
+    end
+
+    it "is invalid" do
+      user = User.create username:"Pekka", password:"secret1", password_confirmation:"secret1"
+
+      expect(user).not_to be_valid
+      expect(User.count).to eq(0)
+    end
   end
 
   describe "with a proper password" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user){ FactoryGirl.create(:user) }
 
     it "is saved" do
-      expect(user.valid?).to be(true)
+      expect(user).to be_valid
       expect(User.count).to eq(1)
     end
 
@@ -27,22 +46,6 @@ describe User do
 
       expect(user.ratings.count).to eq(2)
       expect(user.average_rating).to eq(15.0)
-    end
-  end
-
-  describe "without a proper password" do
-
-    it "is not saved with password containing only letters" do
-      user = User.create :username => "Pekka", :password => "jeejee", :password_confirmation => "jeejee"
-
-      expect(user.valid?).to be(false)
-      expect(User.count).to eq(0)
-    end
-    it "is not saved with too short password" do
-      user = User.create :username => "Pekka", :password => "a1", :password_confirmation => "a1"
-
-      expect(user.valid?).to be(false)
-      expect(User.count).to eq(0)
     end
   end
 
@@ -57,108 +60,72 @@ describe User do
       expect(user.favorite_beer).to eq(nil)
     end
 
-    it "is the only rated if only one rating" do
-      beer = create_beer_with_rating 10, user
+    it "is the only rated if one rating" do
+      beer = create_beer_with_rating(10, user)
 
       expect(user.favorite_beer).to eq(beer)
     end
 
     it "is the one with highest rating if several rated" do
-      create_beers_with_ratings 10, 20, 15, 7, 9, user
-      best = create_beer_with_rating 25, user
+      create_beers_with_ratings(10, 20, 15, 7, 9, user)
+      best = create_beer_with_rating(25, user)
 
       expect(user.favorite_beer).to eq(best)
     end
-   end
-
-  describe "favorite style" do
-     let(:user){FactoryGirl.create(:user) }
-
-      it "has method for determining one" do
-        user.should respond_to :favorite_style
-      end
-
-     it "without ratings does not have one" do
-       expect(user.favorite_style).to eq(nil)
-     end
-
-     it "is the only rated if only one rating" do
-       beer = create_beer_with_style_and_rating("koff", 10, user)
-
-       expect(user.favorite_style).to eq(beer.style)
-     end
-
-     it "is the one with highest rating if several rated" do
-       create_beer_with_styles_and_ratings 10, 20, 15, 7, 9, user
-       best = create_beer_with_style_and_rating("super", 25, user)
-
-       expect(user.favorite_style).to eq(best.style)
-     end
-
   end
 
-  describe "favorite_brewery" do
+  describe "favorite style" do
     let(:user){FactoryGirl.create(:user) }
 
     it "has method for determining one" do
-      user.should respond_to :favorite_brewery_id
+      user.should respond_to :favorite_style
     end
 
     it "without ratings does not have one" do
-      expect(user.favorite_brewery_id).to eq(nil)
+      expect(user.favorite_style).to eq(nil)
     end
 
-    it "is the only one if there is only one rating" do
-      beer = create_beer_with_rating(10, user)
-      brewery = create_brewery(beer)
-      expect(user.favorite_brewery_id).to eq(beer.brewery_id)
+    it "is the style of the only rated if one rating" do
+      create_beers_with_ratings_and_style(10, "Lager", user)
+
+      expect(user.favorite_style.name).to eq("Lager")
     end
 
-    it "is the one with highest rated beer if several beers are rated" do
-      beers = create_beers_with_ratings(10, 20, 15, 7, 9, user)
-      create_brewery(beers)
-      best = create_beer_with_rating(25, user)
-      best2 = create_brewery(best)
-      expect(user.favorite_brewery_id).to eq(best.brewery_id)
-    end
+    it "is the style with highest average rating if several rated" do
+      create_beers_with_ratings_and_style(10, 20, 15, "ALE", user)
+      create_beers_with_ratings_and_style(35, "IPA", user)
+      create_beers_with_ratings_and_style(25, 20, 15, "PINT", user)
 
-  end
-
-  def create_beer_with_style_and_rating(style, score, user)
-    beer = FactoryGirl.create(:beer, :style => style)
-    FactoryGirl.create(:rating, :score => score,  :beer => beer, :user => user)
-    beer
-  end
-
-  def create_beer_with_styles_and_ratings(*scores, user)
-    styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
-    scores.each do |score|
-       style = styles.shift
-       if style.nil?
-         styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
-         style = styles.shift
-       end
-      create_beer_with_style_and_rating(style, score, user)
-    end
-
-  end
-
-  def create_beer_with_rating(score,  user)
-    beer = FactoryGirl.create(:beer)
-    FactoryGirl.create(:rating, :score => score,  :beer => beer, :user => user)
-    beer
-  end
-
-  def create_beers_with_ratings(*scores, user)
-    scores.each do |score|
-      create_beer_with_rating score, user
+      expect(user.favorite_style.name).to eq("IPA")
     end
   end
 
-  def create_brewery(*beers)
-    FactoryGirl.create(:brewery, :name => "tehdas")
-    beers
-  end
+  describe "favorite brewery" do
+    let(:user){FactoryGirl.create(:user) }
 
+    it "has method for determining one" do
+      user.should respond_to :favorite_brewery
+    end
+
+    it "without ratings does not have one" do
+      expect(user.favorite_brewery).to eq(nil)
+    end
+
+    it "is the brewery of only rated if one rating" do
+      brewery = FactoryGirl.create(:brewery, name:"Koff")
+      create_beers_with_ratings_and_brewery(10, brewery, user)
+
+      expect(user.favorite_brewery).to eq(brewery)
+    end
+
+    it "is the brewery with highest average rating if several rated" do
+      plevna = FactoryGirl.create(:brewery, name:"Plevna")
+      create_beers_with_ratings_and_brewery(10, 20, 15, FactoryGirl.create(:brewery), user)
+      create_beers_with_ratings_and_brewery(35, plevna , user)
+      create_beers_with_ratings_and_brewery(25, 20, 15, FactoryGirl.create(:brewery), user)
+
+      expect(user.favorite_brewery).to eq(plevna)
+    end
+  end
 
 end

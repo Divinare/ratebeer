@@ -16,8 +16,14 @@
       </thead>
       <% @places.each do |place| %>
           <tr>
+            <% @ind = 0 %>
             <% Place.rendered_fields.each do |f| %>
+                <% if @ind == 1 %>
+                    <td><%= link_to place.send(f), place_path(place.id) %></td>
+                <% else %>
                 <td><%= place.send(f) %></td>
+                <% end %>
+                <% @ind = @ind + 1 %>
             <% end %>
           </tr>
       <% end %>

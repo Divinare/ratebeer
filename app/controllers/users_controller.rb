@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @beerclub_ids = Membership.where(:user_id => params[:id]).map(&:beer_club_id).sort
+  #  @beerclub_ids = Membership.where(:user_id => params[:id]).map(&:beer_club_id).sort
 
     respond_to do |format|
       format.html # show.html.erb

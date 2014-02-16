@@ -16,6 +16,10 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs/1.json
   def show
     @beer_club = BeerClub.find(params[:id])
+
+    @membership = Membership.new
+    @membership.beer_club = @beer_club
+
     @member_ids = Membership.where(:beer_club_id => params[:id]).map(&:user_id)
 
     respond_to do |format|

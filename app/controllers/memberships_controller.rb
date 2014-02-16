@@ -25,7 +25,7 @@ class MembershipsController < ApplicationController
   # GET /memberships/new.json
   def new
     @membership = Membership.new
-    @beerclubs = BeerClub.all
+    @beerclubs = BeerClub.all.reject{ |b| b.members.include? current_user }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,27 +41,21 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
-
-     #Eli loytyyko jo olemassa oleva yhteys?
-    if !Membership.where(:beer_club_id => params[:membership][:beer_club_id]).empty?
-      redirect_to user_path(current_user), :notice => "Something went wrong, is the user already a member?"
-      return
-    end
     @membership = Membership.new(params_membership)
-    @membership.user_id = current_user.id
+    @membership.user = current_user
 
-    #respond_to do |format|
+    respond_to do |format|
       if @membership.save
-        redirect_to user_path(current_user), :notice => "Membership created successfully!"
-     #} else
-      #}""#{  format.html { render action: "new" }
-     #}   format.json { render json: @membership.errors, status: :unprocessable_entity }
+        format.html { redirect_to beer_club_path(@membership.beer_club_id), notice: current_user.username + ', welcome to the club!' }
+        format.json { render action: 'show', status: :created, location: @membership }
       else
-        redirect_to user_path(current_user), :notice => "Something went wrong."
-
+        @clubs = BeerClub.all.reject{ |b| b.members.include? current_user }
+        format.html { render action: 'new' }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
-    #end
+    end
   end
+
 
   # PUT /memberships/1
   # PUT /memberships/1.json

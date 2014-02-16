@@ -1,6 +1,7 @@
 class BeersController < ApplicationController
   before_filter :ensure_that_signed_in, :except => [:index, :show]
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit, :create]
+  before_action :set_beer, only: [:show, :edit, :update, :destroy]
 
   # GET /beers
   # GET /beers.json
@@ -16,7 +17,8 @@ class BeersController < ApplicationController
   # GET /beers/1
   # GET /beers/1.json
   def show
-    @beer = Beer.find(params[:id])
+    @rating = Rating.new
+    @rating.beer = @beer
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,7 +39,7 @@ class BeersController < ApplicationController
 
   # GET /beers/1/edit
   def edit
-    @beer = Beer.find(params[:id])
+
   end
 
   # POST /beers
@@ -59,7 +61,6 @@ class BeersController < ApplicationController
   # PUT /beers/1
   # PUT /beers/1.json
   def update
-    @beer = Beer.find(params[:id])
 
     respond_to do |format|
       if @beer.update_attributes(params_beer)
@@ -80,7 +81,6 @@ class BeersController < ApplicationController
       redirect_to :back, :flash => { :error => 'You have to be an admin to destroy things' }
       return
     end
-    @beer = Beer.find(params[:id])
     @beer.destroy
 
     respond_to do |format|
@@ -90,11 +90,16 @@ class BeersController < ApplicationController
   end
 
    def params_beer
-     params.require(:beer).permit(:name, :style, :brewery_id)
+     params.require(:beer).permit(:name, :style_id, :brewery_id)
    end
 end
 
 def set_breweries_and_styles_for_template
   @breweries = Brewery.all
-  @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+  @styles = Style.all
+      #["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+end
+
+def set_beer
+  @beer = Beer.find(params[:id])
 end
