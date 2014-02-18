@@ -7,7 +7,7 @@
     <ignored path="ratebeer.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="9753a2d8-d5dc-4262-ab7c-c506cbcc794f" time="1392746301954" ignored="false" />
-    <file path="/seeds.rb" changelist="9753a2d8-d5dc-4262-ab7c-c506cbcc794f" time="1392747169955" ignored="false" />
+    <file path="/seeds.rb" changelist="9753a2d8-d5dc-4262-ab7c-c506cbcc794f" time="1392747278281" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +30,7 @@
       <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="52" selection-start="2235" selection-end="2235" vertical-scroll-proportion="0.45938748">
+            <state line="12" column="266" selection-start="779" selection-end="779" vertical-scroll-proportion="0.23968042">
               <folding />
             </state>
           </provider>
@@ -289,7 +289,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="52" selection-start="2235" selection-end="2235" vertical-scroll-proportion="0.45938748">
+        <state line="12" column="266" selection-start="779" selection-end="779" vertical-scroll-proportion="0.23968042">
           <folding />
         </state>
       </provider>
