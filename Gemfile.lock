@@ -178,7 +178,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   pg
-  rails (= 4.0.2)
+  rails (~> 4.0.2)
   rails-settings-cached (= 0.3.1)
   rails_stdout_logging
   rspec-rails (~> 2.14.1)
