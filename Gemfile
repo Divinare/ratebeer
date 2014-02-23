@@ -1,70 +1,98 @@
 source 'https://rubygems.org'
 
-# gem "rails", '~>4.0.0'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.1'
 
-gem 'bcrypt-ruby', '~> 3.1.2'
-gem 'rails', '~> 4.0.2'
+# Use sqlite3 as the database for Active Record
+# gem 'sqlite3'
+
+# Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+
+# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
+# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
+#gem 'execjs'
+#gem 'therubyracer', :platforms => :ruby
+
+# Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Show database searches in console in a readable format
+gem 'table_print'
+
+# Debugger
+gem 'byebug', group: [:development, :test]
+
+# Password digest
+gem 'bcrypt-ruby', '~> 3.1.2'
+
+# HTTP request helper
 gem 'httparty'
+
+# Saving API key
 gem "rails-settings-cached", "0.3.1"
 
+# JQuery library (JavaScript)
+gem 'jquery-turbolinks'
 
-#gem 'strong_parameters'
+# Bootstrap
+gem 'bootstrap-sass'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :test do
-  gem 'simplecov', :require => false
+  gem 'rspec-rails', '~> 2.14.1'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
   gem 'webmock'
+  # For JS tests
+  gem 'selenium-webdriver'
+  # Database emptying after tests
+  gem 'database_cleaner', '< 1.1.0'
+  # Line coverage
+  gem 'simplecov', require: false
 end
 
+
 group :development, :test do
-  gem 'debugger'
-  gem 'rspec-rails', '~> 2.14.1'
   gem 'sqlite3'
+end
+
+# Bootstrap
+group :development do
+  gem 'rails_layout'
 end
 
 group :production do
   gem 'pg'
-  gem 'rails_stdout_logging'
+  gem 'rails_12factor'
 end
 
-#gem 'therubyracer', '0.11.0beta5'
-#gem 'libv8', '~> 3.11.8'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
 
-
-# Gems used only for assets and not required
-# in production environments by default.
-#group :assets do
- # gem 'sass-rails',   '~> 3.2.3'
- # gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-
-#end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+# Use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# Use Capistrano for deployment
+# gem 'capistrano', group: :development
 
-# To use debugger
-# gem 'debugger'
+# Use debugger
+# gem 'debugger', group: [:development, :test]

@@ -57,4 +57,10 @@ class User < ActiveRecord::Base
     ratings_of_brewery = ratings.select{ |r| r.beer.brewery==brewery }
     ratings_of_brewery.inject(0.0){ |sum, r| sum+r.score}/ratings_of_brewery.count
   end
+
+  def self.top(n)
+    sorted_by_rating_in_desc_order = User.all.sort_by{ |b| -(b.ratings.count||0) }
+    sorted_by_rating_in_desc_order.take(n)
+  end
+
 end

@@ -1,18 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h2> <%= @brewery.name %> </h2>
+<h2><%= @brewery.name %>
+  <% if not @brewery.active  %>
+      <span class="label label-info">retired</span>
+  <% end %>
+</h2>
 
-<i> Established year <%= @brewery.year %> </i>
+<p>
+  <em>Established year:</em>
+  <%= @brewery.year %>
+</p>
 
-<p> Number of beers <%= @brewery.beers.count %> </p>
+<p>Number of beers <%= @brewery.beers.count%> </p>
 
 <ul>
   <% @brewery.beers.each do |beer| %>
-      <li>
-      <%= link_to beer.name, beer %>
-      </li>
+      <li><%= link_to beer.name, beer %></li>
   <% end %>
 </ul>
+
 <% if @brewery.average_rating == 0 %>
     <p> Brewery has no ratings </p>
 <% elsif @brewery.ratings.count == 1 %>
@@ -21,6 +27,6 @@
     <p> Brewery has <%= @brewery.ratings.count %> ratings, average: <%= @brewery.average_rating %> </p>
 <% end %>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) %>
+<%= link_to 'Edit', edit_brewery_path(@brewery), class:"btn btn-primary btn-sm active" %>
 
-<%= link_to 'List of beers', beers_path %>
+<%= link_to 'List of beers', beers_path, class:"btn btn-primary btn-sm active" %>

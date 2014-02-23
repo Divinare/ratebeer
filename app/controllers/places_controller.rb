@@ -4,7 +4,6 @@ class PlacesController < ApplicationController
 
     def search
       session[:last_city] = params[:city]
-
       @places = BeermappingApi.places_in(params[:city])
       if @places.empty?
         redirect_to places_path, notice: "No locations in #{params[:city]}"

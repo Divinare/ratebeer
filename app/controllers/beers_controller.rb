@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_filter :ensure_that_signed_in, :except => [:index, :show]
+  before_filter :ensure_that_signed_in, :except => [:index, :show, :list]
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit, :create]
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
 
@@ -8,6 +8,14 @@ class BeersController < ApplicationController
   def index
     @beers = Beer.all
 
+
+    order = params[:order] || 'name'
+
+    case order
+      when 'name' then @beers.sort_by!{ |b| b.name }
+      when 'brewery' then @beers.sort_by!{ |b| b.brewery.name }
+      when 'style' then @beers.sort_by!{ |b| b.style.name }
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @beers }
@@ -92,6 +100,10 @@ class BeersController < ApplicationController
    def params_beer
      params.require(:beer).permit(:name, :style_id, :brewery_id)
    end
+
+  def list
+  end
+
 end
 
 def set_breweries_and_styles_for_template

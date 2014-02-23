@@ -12,12 +12,10 @@ class RatingsController < ApplicationController
   def create
     #Rating.create params[:rating]
     #session[:last_rating] = "#{Beer.find(params[:rating][:beer_id])} #{params[:rating][:score]} points"
-
-
     @rating = Rating.new(params_rating)
     if @rating.save
     current_user.ratings << @rating
-    redirect_to user_path current_user
+    redirect_to ratings_pathaver
     else
       @beers = Beer.all
       render :new
