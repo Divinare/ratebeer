@@ -35,22 +35,22 @@ User.create username:"Dev", password:"AAA1", password_confirmation:"AAA1", admin
 BeerClub.create name:"Kumpulan kerma", founded:2003, city:"Helsinki"
 BeerClub.create name:"Kaljakeijot", founded:2009, city:"Vantaa"
 
-Rating.create :score => 3, :beer_id => 1, :user_id => 1
-Rating.create :score => 5, :beer_id => 2, :user_id => 1
-Rating.create :score => 3, :beer_id => 3, :user_id => 1
-Rating.create :score => 2, :beer_id => 4, :user_id => 1
-Rating.create :score => 3, :beer_id => 5, :user_id => 1
-Rating.create :score => 1, :beer_id => 6, :user_id => 1
-Rating.create :score => 5, :beer_id => 9, :user_id => 1
-Rating.create :score => 4, :beer_id => 1, :user_id => 2
-Rating.create :score => 4, :beer_id => 2, :user_id => 2
-Rating.create :score => 4, :beer_id => 3, :user_id => 2
-Rating.create :score => 4, :beer_id => 2, :user_id => 2
+Rating.create :score => 31, :beer_id => 1, :user_id => 1
+Rating.create :score => 50, :beer_id => 2, :user_id => 1
+Rating.create :score => 35, :beer_id => 3, :user_id => 1
+Rating.create :score => 21, :beer_id => 4, :user_id => 1
+Rating.create :score => 39, :beer_id => 5, :user_id => 1
+Rating.create :score => 10, :beer_id => 6, :user_id => 1
+Rating.create :score => 45, :beer_id => 9, :user_id => 1
+Rating.create :score => 27, :beer_id => 1, :user_id => 2
+Rating.create :score => 43, :beer_id => 2, :user_id => 2
+Rating.create :score => 18, :beer_id => 3, :user_id => 2
+Rating.create :score => 40, :beer_id => 2, :user_id => 2
 Rating.create :score => 1, :beer_id => 3, :user_id => 3
-Rating.create :score => 1, :beer_id => 4, :user_id => 3
-Rating.create :score => 1, :beer_id => 5, :user_id => 3
-Rating.create :score => 5, :beer_id => 6, :user_id => 3
-Rating.create :score => 5, :beer_id => 7, :user_id => 3
+Rating.create :score => 9, :beer_id => 4, :user_id => 3
+Rating.create :score => 28, :beer_id => 5, :user_id => 3
+Rating.create :score => 36, :beer_id => 6, :user_id => 3
+Rating.create :score => 24, :beer_id => 7, :user_id => 3
 
 Membership.create :beer_club_id => 1, :user_id => 1
 Membership.create :beer_club_id => 2, :user_id => 2
