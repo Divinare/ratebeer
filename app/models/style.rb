@@ -12,6 +12,8 @@ class Style < ActiveRecord::Base
     sorted_by_rating_in_desc_order.take(n)
   end
 
+  public
+
   def average_rating(style)
     num = 0
     beers = Beer.where(:style_id => style.id)
