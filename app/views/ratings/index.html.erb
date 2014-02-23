@@ -42,7 +42,7 @@
 <h3>Recent ratings</h3>
 <ul>
 <% Rating.recent.each do |rating| %>
-   <li><strong style="font-size:15px;"><%= rating.beer %> <%= rating.score %></strong></li>
+   <li><strong style="font-size:15px;"> <%= rating.score %> <%= rating.beer %> by <%= rating.user.username %> </strong></li>
 <% end %>
 </ul>
 </div>
