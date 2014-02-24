@@ -8,8 +8,8 @@ BEERS.show = function(){
     $.each(BEERS.list, function (index, beer) {
         table.append('<tr>'
             +'<td>'+beer['name']+'</td>'
-            +'<td>'+beer.style_id+'</td>'
-            +'<td>'+beer.brewery_id+'</td>'
+            +'<td>'+beer['style']['name']+'</td>'
+            +'<td>'+beer['brewery']['name']+'</td>'
             +'</tr>');
         olut = beer
         console.log(olut)

@@ -26,6 +26,11 @@ class User < ActiveRecord::Base
     ratings.order(score: :desc).limit(1).first.beer
   end
 
+  def favorite_beer_noSQL
+    return nil if ratings.empty?
+    ratings.sort_by{ |r| r.score }.last.beer
+  end
+
   def favorite_brewery
     return nil if ratings.empty?
     brewery_ratings = rated_breweries.inject([]) { |set, brewery| set << [brewery, brewery_average(brewery) ] }

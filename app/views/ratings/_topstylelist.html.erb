@@ -4,7 +4,7 @@
   <% ratings.each do |rating| %>
       <tr>
         <td><%= link_to rating.name, rating %></td>
-        <td><%= rating.average_rating(rating) %></td>
+        <td><%= round(rating.average_rating(rating)) %></td>
       </tr>
   <% end %>
 </table>

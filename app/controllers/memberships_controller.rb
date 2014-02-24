@@ -43,7 +43,11 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(params_membership)
     @membership.user = current_user
-
+    if beer_club_is_being_created
+        @membership.confirmed = true
+    else
+        @membership.confirmed = false
+    end
     respond_to do |format|
       if @membership.save
         format.html { redirect_to beer_club_path(@membership.beer_club_id), notice: current_user.username + ', welcome to the club!' }
@@ -88,4 +92,12 @@ class MembershipsController < ApplicationController
   def params_membership
     params.require(:membership).permit(:beer_club_id, :user_id)
   end
+
+  def beer_club_is_being_created
+    if Membership.where(:beer_club_id => params[:beer_club_id]).first.nil?
+      true
+    end
+    false
+  end
+
 end

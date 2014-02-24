@@ -30,3 +30,5 @@
 <%= link_to 'Edit', edit_brewery_path(@brewery), class:"btn btn-primary btn-sm active" %>
 
 <%= link_to 'List of beers', beers_path, class:"btn btn-primary btn-sm active" %>
+
+<%= link_to "Change activity", toggle_activity_brewery_path(@brewery.id), method: :post, class: "btn btn-primary" %>

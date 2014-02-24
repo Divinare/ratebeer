@@ -1,12 +1,8 @@
 module RatingAverage
+
   def average_rating
-    if ratings.size == 0
-      return 0
-    end
-    b = 0
-    ratings.each do |rating|
-      b = b + rating.score
-    end
-    b/ratings.count
+    return 0 if ratings.length == 0
+    (ratings.pluck(:score).inject { |res, el| res + el } / ratings.count.to_f)
   end
+
 end

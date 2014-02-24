@@ -2,6 +2,7 @@ class BreweriesController < ApplicationController
   #before_filter :authenticate, :only => [:destroy]
   before_filter :ensure_that_signed_in, :except => [:index, :show]
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
+  before_action :skip_if_cached, only: [:index]
 
   # GET /breweries
   # GET /breweries.json
@@ -57,6 +58,7 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.save
+        expire_fragment('brewerylist')
         format.html { redirect_to @brewery, notice: 'Brewery was successfully created.' }
         format.json { render json: @brewery, status: :created, location: @brewery }
       else
@@ -72,6 +74,7 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.update_attributes(params_brewery)
+        expire_fragment('brewerylist')
         format.html { redirect_to @brewery, notice: 'Brewery was successfully updated.' }
         format.json { head :no_content }
       else
@@ -93,6 +96,7 @@ class BreweriesController < ApplicationController
     if not current_user.nil?
        if (current_user.admin)
            @brewery.destroy
+           expire_fragment('brewerylist')
        end
     end
 
@@ -100,6 +104,15 @@ class BreweriesController < ApplicationController
       format.html { redirect_to breweries_url }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_activity
+    brewery = Brewery.find(params[:id])
+    brewery.update_attribute :active, (not brewery.active)
+
+    new_status = brewery.active? ? "active" : "retired"
+
+    redirect_to :back, notice:"Brewery activity status changed to #{new_status}"
   end
 
   private
@@ -110,8 +123,6 @@ class BreweriesController < ApplicationController
     end
   end
 
-  private
-
   def params_brewery
     params.require(:brewery).permit(:name, :year, :active)
   end
@@ -120,5 +131,9 @@ class BreweriesController < ApplicationController
     @brewery = Brewery.find(params[:id])
   end
 
+  def skip_if_cached
+    @order = params[:order] || 'name'
+    return render :index if fragment_exist?("brewerylist")
+  end
 
 end

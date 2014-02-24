@@ -4,6 +4,8 @@
     <b> <%= printRedColor(flash[:error]).html_safe %> </b>
 <% end %>
 
+<% cache "beerlist-#{@order}", skip_digest: true do %>
+
 <table class="table table-hover">
   <tr>
     <th> <%= link_to 'Name', beers_path(order:"name") %> </th>
@@ -30,11 +32,12 @@
               <%= link_to Brewery.where(:id => beer.brewery_id).first.name, brewery_path(Brewery.where(:id => beer.brewery_id).first.id) %>
           <% end %>
         </td>
-        <td><%= link_to 'Edit', edit_beer_path(beer), class:"btn btn-warning btn-sm active" %></td>
-        <td><%= link_to 'Destroy', beer, method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn btn-danger btn-sm active" %></td>
+        <td><%= edit_and_destroy_buttons(beer) %></td>
       </tr>
   <% end %>
 </table>
+
+<% end %>
 
 <br/>
 

@@ -1,6 +1,5 @@
 class Brewery < ActiveRecord::Base
   include RatingAverage
-
  # secure params :name, :year
 
   has_many :beers, :dependent => :destroy
