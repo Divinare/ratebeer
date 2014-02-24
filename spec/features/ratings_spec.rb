@@ -38,24 +38,24 @@ describe "Rating" do
 
     it "all are listed at the ratings page" do
       visit ratings_path
-      expect(page).to have_content "#{beer1.name} 10"
-      expect(page).to have_content "#{beer1.name} 20"
-      expect(page).to have_content "#{beer2.name} 30"
+      expect(page).to have_content "10 #{beer1.name}"
+      expect(page).to have_content "20 #{beer1.name}"
+      expect(page).to have_content "30 #{beer2.name}"
     end
 
     it "only users own are shown at users page" do
       visit user_path(user)
       expect(page).to have_content '2 ratings'
-      expect(page).to have_content "#{beer1.name} 10"
-      expect(page).to have_content "#{beer2.name} 30"
-      expect(page).not_to have_content "#{beer1.name} 20"
+      expect(page).to have_content "10 #{beer1.name}"
+      expect(page).to have_content "30 #{beer2.name}"
+      expect(page).not_to have_content "20 #{beer1.name}"
     end
 
     it "user can delete one of his own" do
       visit user_path(user)
 
       expect{
-        page.first('a', text:'delete').click
+        page.first('a', text:'Destroy').click
       }.to change{Rating.count}.by(-1)
     end
   end

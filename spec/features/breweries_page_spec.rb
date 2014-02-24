@@ -3,8 +3,7 @@ require 'spec_helper'
 describe "Breweries page" do
   it "should not have any before been created" do
     visit breweries_path
-    expect(page).to have_content 'Listing breweries'
-    expect(page).to have_content 'number of breweries 0'
+    expect(page).to have_content 'Number of active breweries: 0'
 
   end
 
@@ -20,7 +19,7 @@ describe "Breweries page" do
     end
 
     it "lists the breweries and their total number" do
-      expect(page).to have_content "number of breweries #{@breweries.count}"
+      expect(page).to have_content "Number of retired breweries: #{@breweries.count}"
       @breweries.each do |brewery|
         expect(page).to have_content brewery
       end
@@ -30,7 +29,7 @@ describe "Breweries page" do
       click_link "Koff"
 
       expect(page).to have_content "Koff"
-      expect(page).to have_content "Established year 1897"
+      expect(page).to have_content "Established year: 1897"
     end
 
   end

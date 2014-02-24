@@ -5,29 +5,37 @@
 <% if @user.ratings.empty? %>
    <p> No ratings given</p>
 <% elsif @user.ratings.size == 1 %>
-    <p> has <%= @user.ratings.size %> rating, average score: <%= @user.average_rating %> </p>
+    <p> Has <%= @user.ratings.size %> rating, average score: <%= @user.average_rating %> </p>
 <% else %>
-   <p> has <%= @user.ratings.size %> ratings, average score: <%= @user.average_rating %> </p>
+   <p> Has <%= @user.ratings.size %> ratings, average score: <%= @user.average_rating %> </p>
 <% end %>
 
-<ul>
+<table class="table table-hover">
+  <tr>
+    <th>Score</th>
+    <th>User</th>
+    <th></th>
+  </tr>
+
   <% @user.ratings.each do |rating| %>
-      <li>
-        <%= rating %>
-        <% if @user == current_user %>
-            <%= link_to 'delete', rating, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+      <tr>
+        <td><%= rating %></td>
+        <td><%= link_to rating.beer.name, rating.beer %></td>
+        <td><% if @user == current_user %>
+            <%= link_to 'Destroy', rating, :method => :delete, :data => { :confirm => 'Are you sure?' }, class:"btn btn-danger btn-sm active" %>
         <% end %>
-      </li>
+        </td>
+      </tr>
   <% end %>
-</ul>
+</table>
 
 <% if @user.beer_clubs.any? %>
-    <p>
-      member of
+    <h5>
+      Member of
       <% @user.beer_clubs.each do |club| %>
           <%= link_to club.name, club %>
       <% end %>
-    </p>
+    </h5>
 <% end %>
 
 <% if @user == current_user %>
